@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowDown, MapPin, Calendar } from "lucide-react";
 import fpcLogo from "@/assets/fpc-logo.png";
 import uapLogo from "@/assets/uap-logo.png";
 import MagicShapes from "./MagicShapes";
@@ -7,6 +8,11 @@ const HeroSection = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden magic-pattern">
     <MagicShapes />
     <div className="grid-pattern absolute inset-0 opacity-40" />
+    <div className="grain-overlay absolute inset-0" />
+
+    {/* Film strip left */}
+    <div className="hidden md:block absolute left-0 top-0 bottom-0 film-strip opacity-20" />
+    <div className="hidden md:block absolute right-0 top-0 bottom-0 film-strip opacity-20" />
 
     <div className="container relative z-10 px-4 py-20">
       <motion.div
@@ -25,7 +31,12 @@ const HeroSection = () => (
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
-          <div className="w-px h-16 md:h-20 bg-border" />
+          <motion.div 
+            className="w-px h-16 md:h-20 bg-foreground/20"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          />
           <motion.img
             src={fpcLogo}
             alt="Film & Photography Club"
@@ -38,7 +49,7 @@ const HeroSection = () => (
 
         {/* Subtitle */}
         <motion.p
-          className="text-sm md:text-base tracking-[0.3em] uppercase text-muted-foreground mb-4"
+          className="text-sm md:text-base tracking-[0.3em] uppercase text-muted-foreground mb-4 font-retro"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
@@ -52,6 +63,7 @@ const HeroSection = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
+          style={{ animation: "flicker 4s ease-in-out infinite" }}
         >
           <span className="text-foreground">The</span>{" "}
           <span className="text-gradient">ViewFinder</span>
@@ -63,13 +75,13 @@ const HeroSection = () => (
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.9, duration: 0.5 }}
         >
-          <div className="h-px w-16 md:w-24 bg-primary/30" />
+          <div className="h-0.5 w-16 md:w-24 bg-foreground/20" />
           <span className="text-6xl md:text-8xl font-display font-black text-primary">8</span>
-          <div className="h-px w-16 md:w-24 bg-primary/30" />
+          <div className="h-0.5 w-16 md:w-24 bg-foreground/20" />
         </motion.div>
 
         <motion.p
-          className="text-lg md:text-xl text-muted-foreground max-w-xl mb-4"
+          className="text-lg md:text-xl text-muted-foreground max-w-xl mb-4 font-retro"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1 }}
@@ -84,29 +96,27 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3 }}
         >
-          <div className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-            📅 20-21 Nov 2024
+          <div className="flex items-center gap-2 px-4 py-2 rounded-sm bg-primary/10 border border-primary/20 text-primary text-sm font-medium retro-shadow">
+            <Calendar className="w-4 h-4" />
+            20-21 Nov 2024
           </div>
-          <div className="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium">
-            📍 Void Space, CSE Dept.
+          <div className="flex items-center gap-2 px-4 py-2 rounded-sm bg-secondary border border-border text-secondary-foreground text-sm font-medium retro-shadow">
+            <MapPin className="w-4 h-4" />
+            Void Space, CSE Dept.
           </div>
         </motion.div>
 
         {/* CTA */}
         <motion.a
           href="#details"
-          className="group relative inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display font-semibold text-lg rounded-full overflow-hidden transition-all hover:shadow-lg"
+          className="group relative inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display font-semibold text-lg rounded-sm overflow-hidden transition-all retro-shadow hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5 }}
-          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
-          style={{ animationName: "pulse-glow", animationDuration: "3s", animationIterationCount: "infinite" }}
         >
           Explore Details
-          <svg className="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+          <ArrowDown className="w-5 h-5 transition-transform group-hover:translate-y-1" />
         </motion.a>
       </motion.div>
     </div>
@@ -117,7 +127,7 @@ const HeroSection = () => (
       animate={{ y: [0, 10, 0] }}
       transition={{ duration: 2, repeat: Infinity }}
     >
-      <div className="w-6 h-10 rounded-full border-2 border-primary/30 flex justify-center pt-2">
+      <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex justify-center pt-2">
         <div className="w-1.5 h-3 rounded-full bg-primary/50" />
       </div>
     </motion.div>
