@@ -58,6 +58,9 @@ export default {
         charcoal: "hsl(var(--charcoal))",
         "warm-grey": "hsl(var(--warm-grey))",
         "off-white": "hsl(var(--off-white))",
+        sepia: "hsl(var(--sepia))",
+        "film-grain": "hsl(var(--film-grain))",
+        "vintage-amber": "hsl(var(--vintage-amber))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
