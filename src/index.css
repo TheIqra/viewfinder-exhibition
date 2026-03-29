@@ -146,17 +146,24 @@
     animation: focusRingFade 2s ease-out forwards;
   }
 
-  /* Camera viewfinder for Coming Soon */
+  /* Camera viewfinder */
   .camera-viewfinder {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 85vw;
+    height: 70vh;
+    max-width: 900px;
+    max-height: 700px;
+  }
+
+  .camera-viewfinder .vf-corner {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   @media (min-width: 768px) {
-    .camera-viewfinder {
-      width: 500px;
-      height: 400px;
+    .camera-viewfinder .vf-corner {
+      width: 2.5rem;
+      height: 2.5rem;
     }
   }
 
