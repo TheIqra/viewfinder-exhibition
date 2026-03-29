@@ -8,6 +8,27 @@ const HeroSection = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden magic-pattern camera-focus-reveal">
     {/* Camera focus ring */}
     <div className="camera-focus-ring" />
+
+    {/* Camera viewfinder corners + crosshair */}
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[6]">
+      <motion.div
+        className="camera-viewfinder"
+        initial={{ opacity: 0, scale: 1.3 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
+      >
+        <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-primary/40" />
+        <div className="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-primary/40" />
+        <div className="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-primary/40" />
+        <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-primary/40" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="w-px h-8 bg-primary/20 absolute left-1/2 -translate-x-1/2 -top-4" />
+          <div className="w-8 h-px bg-primary/20 absolute top-1/2 -translate-y-1/2 -left-4" />
+          <div className="w-2 h-2 rounded-full border border-primary/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        </div>
+      </motion.div>
+    </div>
+
     <div className="grid-pattern absolute inset-0 opacity-40" />
     <div className="grain-overlay absolute inset-0" />
 
