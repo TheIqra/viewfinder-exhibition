@@ -14,9 +14,10 @@ const ComingSoonSection = () => (
       >
         {/* Corners */}
         <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-primary/40" />
-        <div className="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-primary/40" />
-        <div className="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-primary/40" />
-        <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-primary/40" />
+        <motion.div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-primary/40" animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
+        <motion.div className="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-primary/40" animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} />
+        <motion.div className="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-primary/40" animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
+        <motion.div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-primary/40" animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }} />
         {/* Center cross */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="w-px h-8 bg-primary/20 absolute left-1/2 -translate-x-1/2 -top-4" />
