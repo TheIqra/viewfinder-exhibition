@@ -10,8 +10,8 @@ const fadeIn = {
 };
 
 const timeline = [
-  { date: "10th Nov", label: "Submission Deadline", icon: Upload, accent: true },
-  { date: "20-21 Nov", label: "Exhibition Dates", icon: Palette, accent: false },
+  { date: "10th April", label: "Submission Deadline", icon: Upload, accent: true },
+  { date: "20-21 April", label: "Exhibition Dates", icon: Palette, accent: false },
   { date: "Void Space", label: "Venue — CSE Dept.", icon: MapPin, accent: false },
 ];
 

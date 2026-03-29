@@ -127,8 +127,37 @@
 
   .marquee-track {
     display: flex;
-    animation: marquee 25s linear infinite;
+    animation: marquee 45s linear infinite;
     width: max-content;
+  }
+
+  /* Camera focus reveal for hero */
+  .camera-focus-reveal {
+    animation: cameraFocusReveal 1.8s ease-out forwards;
+  }
+
+  .camera-focus-ring {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 80px 40px hsl(var(--background) / 0.6);
+    animation: focusRingFade 2s ease-out forwards;
+  }
+
+  /* Camera viewfinder for Coming Soon */
+  .camera-viewfinder {
+    position: relative;
+    width: 320px;
+    height: 320px;
+  }
+
+  @media (min-width: 768px) {
+    .camera-viewfinder {
+      width: 500px;
+      height: 400px;
+    }
   }
 
   .marquee-track:hover {
@@ -160,4 +189,17 @@
 @keyframes vhs-line {
   0% { top: -10%; }
   100% { top: 110%; }
+}
+
+@keyframes cameraFocusReveal {
+  0% { filter: blur(12px); opacity: 0.6; }
+  40% { filter: blur(6px); opacity: 0.8; }
+  70% { filter: blur(2px); opacity: 0.95; }
+  100% { filter: blur(0); opacity: 1; }
+}
+
+@keyframes focusRingFade {
+  0% { opacity: 1; box-shadow: inset 0 0 120px 80px hsl(var(--background)); }
+  60% { opacity: 0.5; box-shadow: inset 0 0 60px 30px hsl(var(--background) / 0.4); }
+  100% { opacity: 0; box-shadow: none; }
 }

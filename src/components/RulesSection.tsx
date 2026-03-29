@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
-import GeometricPattern from "./GeometricPattern";
 
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
@@ -24,9 +23,12 @@ const rules = [
 ];
 
 const RulesSection = () => (
-  <section className="relative py-24 bg-secondary/50 overflow-hidden">
-    <GeometricPattern variant="dense" />
+  <section className="relative py-24 overflow-hidden">
     <div className="grain-overlay absolute inset-0" />
+    {/* Subtle film-frame border accent */}
+    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
     <div className="container relative z-10 px-4">
       <motion.div {...fadeIn} className="text-center mb-16">
         <p className="text-sm tracking-[0.2em] uppercase text-primary font-medium mb-3 font-retro">Guidelines</p>
@@ -35,7 +37,7 @@ const RulesSection = () => (
         </h2>
       </motion.div>
 
-      <div className="max-w-3xl mx-auto space-y-3">
+      <div className="max-w-3xl mx-auto grid gap-3">
         {rules.map((rule, i) => (
           <motion.div
             key={i}
@@ -43,9 +45,12 @@ const RulesSection = () => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="flex items-start gap-4 p-4 rounded-sm bg-card border-2 border-border hover:border-primary/20 transition-colors"
+            className="flex items-start gap-4 p-4 rounded-sm bg-card border-2 border-border hover:border-primary/30 transition-colors retro-shadow"
           >
-            <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+            <span className="font-retro text-primary/50 text-xs mt-1 min-w-[20px]">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
             <p className="text-sm text-foreground leading-relaxed">{rule}</p>
           </motion.div>
         ))}
