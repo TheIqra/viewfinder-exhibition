@@ -16,7 +16,7 @@ const FooterSection = () => (
             Film & Photography Club — University of Asia Pacific
           </p>
           <p className="text-xs text-muted-foreground/60 mt-1 font-retro">
-            The ViewFinder 8 &copy; 2024. All rights reserved.
+            The ViewFinder 8 &copy; 2026. All rights reserved.
           </p>
         </div>
       </div>

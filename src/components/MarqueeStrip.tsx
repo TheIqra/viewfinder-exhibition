@@ -2,8 +2,8 @@ import { Camera, Aperture, Film, Focus, Eye, Sparkles } from "lucide-react";
 
 const items = [
   { text: "THE VIEWFINDER 8", icon: Camera },
-  { text: "SUBMIT BY 10TH NOV", icon: Aperture },
-  { text: "EXHIBITION 20-21 NOV", icon: Film },
+  { text: "SUBMIT BY 10TH APRIL", icon: Aperture },
+  { text: "EXHIBITION 20-21 APRIL", icon: Film },
   { text: "VOID SPACE, CSE DEPT", icon: Focus },
   { text: "OPEN FOR ALL DEPARTMENTS", icon: Eye },
   { text: "SHOWCASE YOUR VISION", icon: Sparkles },

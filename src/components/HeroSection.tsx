@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { ArrowDown, MapPin, Calendar } from "lucide-react";
 import fpcLogo from "@/assets/fpc-logo.png";
 import uapLogo from "@/assets/uap-logo.png";
-import MagicShapes from "./MagicShapes";
+
 
 const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden magic-pattern">
-    <MagicShapes />
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden magic-pattern camera-focus-reveal">
+    {/* Camera focus ring */}
+    <div className="camera-focus-ring" />
     <div className="grid-pattern absolute inset-0 opacity-40" />
     <div className="grain-overlay absolute inset-0" />
 
@@ -98,7 +99,7 @@ const HeroSection = () => (
         >
           <div className="flex items-center gap-2 px-4 py-2 rounded-sm bg-primary/10 border border-primary/20 text-primary text-sm font-medium retro-shadow">
             <Calendar className="w-4 h-4" />
-            20-21 Nov 2024
+            20-21 April 2026
           </div>
           <div className="flex items-center gap-2 px-4 py-2 rounded-sm bg-secondary border border-border text-secondary-foreground text-sm font-medium retro-shadow">
             <MapPin className="w-4 h-4" />
