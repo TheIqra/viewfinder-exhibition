@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, MapPin, Calendar } from "lucide-react";
 import fpcLogo from "@/assets/fpc-logo.png";
 import uapLogo from "@/assets/uap-logo.png";
-import MagicShapes from "./MagicShapes";
+
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden magic-pattern camera-focus-reveal">
