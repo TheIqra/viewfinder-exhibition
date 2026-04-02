@@ -8,14 +8,14 @@ const fadeIn = {
 };
 
 const photos = [
-  { src: "/gallery/21201128_Cat-3_photo-1_Yeakin_Iqra - Nazmul Yeakin Iqra.jpg", name: "Nazmul Yeakin Iqra", label: "UAP Diary" },
-  { src: "/gallery/22101074_Cat-1_photo-1 - Sajedul Islam Emon.jpg", name: "Sajedul Islam Emon", label: "DSLR Photography" },
-  { src: "/gallery/22101203_Cat-2_photo-2 - Mohammad Nazmul Hossain Nadim.JPG", name: "Mohammad Nazmul Hossain Nadim", label: "Mobile Photography" },
-  { src: "/gallery/22103004_Rider Horse_photo-2 - Jamil Hossain.jpg", name: "Jamil Hossain", label: "DSLR Photography" },
-  { src: "/gallery/22201034_Cat-3_Photo-2 - Julias Uddin Khan.jpg", name: "Julias Uddin Khan", label: "UAP Diary" },
-  { src: "/gallery/22201062_cat-3_photo-1 - Tasnim Zaman.jpg", name: "Tasnim Zaman", label: "UAP Diary" },
-  { src: "/gallery/22201065_cat-1_photo-1- Afiatun Jannat.jpg", name: "Afiatun Jannat", label: "DSLR Photography" },
-  { src: "/gallery/baivab_Cat-1_photo-1 - Baivab Das.jpg", name: "Baivab Das", label: "DSLR Photography" },
+  { src: "/gallery/21201128_Cat-3_photo-1_Yeakin_Iqra - Nazmul Yeakin Iqra.webp", name: "Nazmul Yeakin Iqra", label: "UAP Diary" },
+  { src: "/gallery/22101074_Cat-1_photo-1 - Sajedul Islam Emon.webp", name: "Sajedul Islam Emon", label: "DSLR Photography" },
+  { src: "/gallery/22101203_Cat-2_photo-2 - Mohammad Nazmul Hossain Nadim.webp", name: "Mohammad Nazmul Hossain Nadim", label: "Mobile Photography" },
+  { src: "/gallery/22103004_Rider Horse_photo-2 - Jamil Hossain.webp", name: "Jamil Hossain", label: "DSLR Photography" },
+  { src: "/gallery/22201034_Cat-3_Photo-2 - Julias Uddin Khan.webp", name: "Julias Uddin Khan", label: "UAP Diary" },
+  { src: "/gallery/22201062_cat-3_photo-1 - Tasnim Zaman.webp", name: "Tasnim Zaman", label: "UAP Diary" },
+  { src: "/gallery/22201065_cat-1_photo-1- Afiatun Jannat.webp", name: "Afiatun Jannat", label: "DSLR Photography" },
+  { src: "/gallery/baivab_Cat-1_photo-1 - Baivab Das.webp", name: "Baivab Das", label: "DSLR Photography" },
 ];
 
 const AboutSection = () => (
