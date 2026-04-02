@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { HelpCircle, ChevronDown } from "lucide-react";
+import { HugeiconsIcon } from '@hugeicons/react';
+import { InformationDiamondIcon } from '@hugeicons/core-free-icons';
 import {
   Accordion,
   AccordionContent,
@@ -56,10 +57,15 @@ const faqs = [
 const FAQSection = () => (
   <section className="relative py-24 overflow-hidden">
     <div className="grain-overlay absolute inset-0" />
+    <div className="dot-pattern absolute inset-0 opacity-20" />
+    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
     <div className="container relative z-10 px-4">
       <motion.div {...fadeIn} className="text-center mb-16">
         <div className="inline-flex items-center gap-2 mb-3">
-          <HelpCircle className="w-4 h-4 text-primary" />
+          <span className="text-primary flex items-center justify-center">
+            <HugeiconsIcon icon={InformationDiamondIcon} size={16} color="currentColor" strokeWidth={2} />
+          </span>
           <p className="text-sm tracking-[0.2em] uppercase text-primary font-medium font-retro">
             Questions?
           </p>

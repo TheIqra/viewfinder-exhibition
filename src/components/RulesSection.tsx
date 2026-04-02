@@ -16,7 +16,6 @@ const rules = [
   "Over-processed photos will not be accepted.",
   "Manipulation allowed only for conceptual photos.",
   "High-resolution .jpg format (max 30MP). No RAW or TIFF.",
-  "Must include camera-recorded metadata.",
   "Must be original — no copyright infringement.",
   "No inappropriate, indecent, or offensive content.",
   "Previously exhibited photos are not allowed.",
@@ -25,7 +24,7 @@ const rules = [
 const RulesSection = () => (
   <section className="relative py-24 overflow-hidden">
     <div className="grain-overlay absolute inset-0" />
-    {/* Subtle film-frame border accent */}
+    <div className="dot-pattern absolute inset-0 opacity-20" />
     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
     <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
@@ -35,22 +34,25 @@ const RulesSection = () => (
         <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground">
           Submission <span className="text-gradient">Rules</span>
         </h2>
+        <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm">
+          Please read all guidelines carefully before submitting your work.
+        </p>
       </motion.div>
 
-      <div className="max-w-3xl mx-auto grid gap-3">
+      <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-4">
         {rules.map((rule, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="flex items-start gap-4 p-4 rounded-sm bg-card border-2 border-border hover:border-primary/30 transition-colors retro-shadow"
+            transition={{ duration: 0.4, delay: i * 0.06 }}
+            whileHover={{ x: 4 }}
+            className="group flex items-start gap-4 p-5 rounded-sm bg-card border border-border border-l-[3px] border-l-primary/40 hover:border-l-primary hover:shadow-[4px_4px_0px_hsl(var(--primary)/0.15)] transition-all duration-300 retro-shadow"
           >
-            <span className="font-retro text-primary/50 text-xs mt-1 min-w-[20px]">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+            <div className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+              <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
+            </div>
             <p className="text-sm text-foreground leading-relaxed">{rule}</p>
           </motion.div>
         ))}

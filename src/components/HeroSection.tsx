@@ -1,13 +1,17 @@
 import { motion } from "framer-motion";
-import { ArrowDown, MapPin, Calendar } from "lucide-react";
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowDownDoubleIcon, Directions02Icon, Calendar02Icon } from '@hugeicons/core-free-icons';
 import fpcLogo from "@/assets/fpc-logo.png";
 import uapLogo from "@/assets/uap-logo.png";
 
 
 const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden magic-pattern camera-focus-reveal">
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden magic-pattern">
+    {/* Camera focus reveal - isolated so filter doesn't block pointer-events */}
+    <div className="absolute inset-0 z-[1] pointer-events-none camera-focus-reveal" />
+
     {/* Camera focus ring */}
-    <div className="camera-focus-ring" />
+    <div className="camera-focus-ring pointer-events-none" />
 
     {/* Camera viewfinder corners + crosshair */}
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[6]">
@@ -29,19 +33,37 @@ const HeroSection = () => (
       </motion.div>
     </div>
 
-    <div className="grid-pattern absolute inset-0 opacity-40" />
-    <div className="grain-overlay absolute inset-0" />
+    <div className="grid-pattern absolute inset-0 opacity-15 pointer-events-none" />
 
     {/* Film strip left */}
-    <div className="hidden md:block absolute left-0 top-0 bottom-0 film-strip opacity-20" />
-    <div className="hidden md:block absolute right-0 top-0 bottom-0 film-strip opacity-20" />
+    <div className="hidden md:block absolute left-0 top-0 bottom-0 film-strip opacity-20 pointer-events-none z-0" />
+    <div className="hidden md:block absolute right-0 top-0 bottom-0 film-strip opacity-20 pointer-events-none z-0" />
 
-    <div className="container relative z-10 px-4 py-20">
+    {/* Camera HUD Elements */}
+    <div className="absolute top-8 right-8 z-20 pointer-events-none hidden sm:flex items-center gap-2 font-mono text-xs md:text-sm text-red-500 font-bold tracking-widest">
+      <motion.div 
+        className="w-3 h-3 rounded-full bg-red-500"
+        animate={{ opacity: [1, 0, 1] }} 
+        transition={{ duration: 2, repeat: Infinity }} 
+      />
+      REC
+      <span className="ml-2 text-foreground/70">
+        00<motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1, repeat: Infinity }}>:</motion.span>00<motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1, repeat: Infinity }}>:</motion.span>00
+      </span>
+    </div>
+
+    <div className="absolute bottom-8 left-8 z-20 pointer-events-none hidden sm:flex flex-col gap-1 font-mono text-xs text-foreground/50 tracking-widest">
+      <span>ISO 800</span>
+      <span>F/2.8</span>
+      <span>1/125</span>
+    </div>
+
+    <div className="container relative z-[50] px-4 py-20 pointer-events-auto select-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="flex flex-col items-center text-center"
+        className="flex flex-col items-center text-center relative z-[50] w-full"
       >
         {/* Logos */}
         <div className="flex items-center gap-6 md:gap-10 mb-8">
@@ -53,7 +75,7 @@ const HeroSection = () => (
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
-          <motion.div 
+          <motion.div
             className="w-px h-16 md:h-20 bg-foreground/20"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1 }}
@@ -76,7 +98,7 @@ const HeroSection = () => (
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          Film & Photography Club presents
+          Film & Photography Club,CSE-UAP presents
         </motion.p>
 
         {/* Title */}
@@ -108,7 +130,7 @@ const HeroSection = () => (
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1 }}
         >
-          A Photography Exhibition by UAP
+          A Captivating Photographic Journey
         </motion.p>
 
         {/* Dates */}
@@ -119,12 +141,16 @@ const HeroSection = () => (
           transition={{ delay: 1.3 }}
         >
           <div className="flex items-center gap-2 px-4 py-2 rounded-sm bg-primary/10 border border-primary/20 text-primary text-sm font-medium retro-shadow">
-            <Calendar className="w-4 h-4" />
-            20-21 April 2026
+            <span className="flex items-center justify-center">
+              <HugeiconsIcon icon={Calendar02Icon} size={16} color="currentColor" strokeWidth={2} />
+            </span>
+            19-20 April
           </div>
           <div className="flex items-center gap-2 px-4 py-2 rounded-sm bg-secondary border border-border text-secondary-foreground text-sm font-medium retro-shadow">
-            <MapPin className="w-4 h-4" />
-            Void Space, CSE Dept.
+            <span className="flex items-center justify-center">
+              <HugeiconsIcon icon={Directions02Icon} size={16} color="currentColor" strokeWidth={2} />
+            </span>
+            UAP Plaza
           </div>
         </motion.div>
 
@@ -138,14 +164,16 @@ const HeroSection = () => (
           whileTap={{ scale: 0.97 }}
         >
           Explore Details
-          <ArrowDown className="w-5 h-5 transition-transform group-hover:translate-y-1" />
+          <span className="transition-transform group-hover:translate-y-1 flex items-center justify-center">
+            <HugeiconsIcon icon={ArrowDownDoubleIcon} size={20} color="currentColor" strokeWidth={2.5} />
+          </span>
         </motion.a>
       </motion.div>
     </div>
 
     {/* Scroll indicator */}
     <motion.div
-      className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none z-0"
       animate={{ y: [0, 10, 0] }}
       transition={{ duration: 2, repeat: Infinity }}
     >
