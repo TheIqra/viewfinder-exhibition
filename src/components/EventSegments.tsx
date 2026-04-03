@@ -12,7 +12,7 @@ import { Clapperboard, HelpCircle, Search, Gamepad2, Gift, MessageCircleQuestion
 
 const EventSegments = () => {
   return (
-    <section className="relative py-24 md:py-32 bg-background overflow-hidden border-t-2 border-border/50">
+    <section id="event-segments" className="relative py-24 md:py-32 bg-background overflow-hidden border-t-2 border-border/50">
       {/* Subtle halftone background */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"

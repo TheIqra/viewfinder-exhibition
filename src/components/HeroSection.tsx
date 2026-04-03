@@ -156,7 +156,7 @@ const HeroSection = () => (
 
         {/* CTA */}
         <motion.a
-          href="#details"
+          href="#event-segments"
           className="group relative inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display font-semibold text-lg rounded-sm overflow-hidden transition-all retro-shadow hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
