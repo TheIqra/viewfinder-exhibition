@@ -1,6 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { X, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 const WHATSAPP_NUMBER = "8801319345357";
 const WHATSAPP_MESSAGE = encodeURIComponent(
@@ -9,25 +7,13 @@ const WHATSAPP_MESSAGE = encodeURIComponent(
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 const WhatsAppButton = () => {
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex items-end gap-3">
-      {/* Tooltip bubble */}
-      <AnimatePresence>
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0, x: 12, scale: 0.9 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 12, scale: 0.9 }}
-            transition={{ duration: 0.2 }}
-            className="mb-1 bg-card border border-border rounded-sm px-4 py-3 retro-shadow max-w-[200px] text-right"
-          >
-            <p className="text-xs font-semibold text-foreground leading-snug">Got a question?</p>
-            <p className="text-[10px] text-muted-foreground font-retro mt-0.5">Tap to chat on WhatsApp</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="fixed bottom-6 right-6 z-[100] flex items-end gap-3 group">
+      {/* Tooltip bubble (CSS driven to prevent hover flickering) */}
+      <div className="mb-1 bg-card border border-border rounded-lg px-4 py-3 shadow-lg max-w-[200px] text-right opacity-0 translate-x-4 scale-95 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100 transition-all duration-300 ease-out origin-right">
+        <p className="text-xs font-semibold text-foreground leading-snug">Got a question?</p>
+        <p className="text-[10px] text-muted-foreground font-retro mt-1">Tap to chat on WhatsApp</p>
+      </div>
 
       {/* Button */}
       <motion.a
@@ -35,23 +21,19 @@ const WhatsAppButton = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
-        onHoverStart={() => setHovered(true)}
-        onHoverEnd={() => setHovered(false)}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1.5 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.93 }}
-        className="relative flex items-center justify-center w-14 h-14 rounded-full shadow-lg"
-        style={{ background: "#25D366" }}
+        className="relative flex items-center justify-center w-14 h-14 rounded-full shadow-xl bg-[#25D366]"
       >
-        {/* Pulse ring */}
-        <motion.span
-          className="absolute inset-0 rounded-full pointer-events-none -z-10"
-          style={{ background: "#25D366" }}
-          animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+        {/* Pulse ring using smooth CSS ping instead of snap keyframes */}
+        <span
+          className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75 pointer-events-none -z-10"
+          style={{ animationDuration: "2s" }}
         />
+        
         {/* WhatsApp SVG icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"

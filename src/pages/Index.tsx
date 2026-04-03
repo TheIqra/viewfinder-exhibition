@@ -3,6 +3,7 @@ import MarqueeStrip from "@/components/MarqueeStrip";
 import AboutSection from "@/components/AboutSection";
 import WhoCanParticipate from "@/components/WhoCanParticipate";
 import ScheduleSection from "@/components/ScheduleSection";
+import EventSegments from "@/components/EventSegments";
 import SectionsDetail from "@/components/SectionsDetail";
 import RulesSection from "@/components/RulesSection";
 import RegistrationSection from "@/components/RegistrationSection";
@@ -18,8 +19,9 @@ const Index = () => (
     <MarqueeStrip />
     <ComingSoonSection />
     <AboutSection />
-    <WhoCanParticipate />
+    <EventSegments />
     <ScheduleSection />
+    <WhoCanParticipate />
     <MarqueeStrip />
     <SectionsDetail />
     <RulesSection />

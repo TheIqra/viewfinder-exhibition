@@ -1,125 +1,141 @@
 import { motion } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Calendar02Icon, SmartPhone01Icon } from "@hugeicons/core-free-icons";
+import { Calendar02Icon, SmartPhone01Icon, Film02Icon } from "@hugeicons/core-free-icons";
 
 const sections = [
-  { 
-    title: "Day - 1", 
-    subtitle: "On-Campus Action", 
-    theme: "April 19, 2026", 
+  {
+    title: "Day One",
+    subtitle: "On-Campus Action",
+    theme: "April 19, 2026",
     items: [
       "Photo Exhibition",
       "Color Hunt",
       "Pop Quiz 1",
       "Photo Hunt"
     ],
-    icon: Calendar02Icon, 
-    rotate: -4, 
-    bgColor: "bg-stone-100", 
-    tapePos: "top-[-10px] left-1/2 -ml-10 rotate-[-2deg]",
+    icon: Calendar02Icon,
   },
-  { 
-    title: "Day - 2", 
-    subtitle: "Closing Ceremony", 
-    theme: "April 20, 2026", 
+  {
+    title: "Day Two",
+    subtitle: "Closing Ceremony",
+    theme: "April 20, 2026",
     items: [
       "Photo Exhibition",
-      "Dump Charades",
+      "Dumb Charades",
       "Pop Quiz 2",
       "Prize Giving"
-    ], 
-    icon: Calendar02Icon, 
-    rotate: 2, 
-    bgColor: "bg-slate-100", 
-    tapePos: "top-[-12px] right-8 rotate-[4deg]",
+    ],
+    icon: Film02Icon,
   },
-  { 
-    title: "Online Event", 
-    subtitle: "Virtual Session", 
-    theme: "Pre-Event", 
+  {
+    title: "Virtual",
+    subtitle: "Online Event",
+    theme: "Pre-Event",
     items: [
       "Critiquest (Movie Review)"
-    ], 
-    icon: SmartPhone01Icon, 
-    rotate: -2, 
-    bgColor: "bg-orange-50", 
-    tapePos: "bottom-[-10px] left-1/2 -ml-10 rotate-[1deg]",
+    ],
+    icon: SmartPhone01Icon,
   },
 ];
 
 const SectionsDetail = () => (
-  <section id="categories" className="relative py-32 overflow-hidden bg-background">
+  <section id="schedule" className="relative py-24 md:py-32 bg-background border-t-2 border-border/50 overflow-hidden">
+    {/* Subtle halftone/grain background */}
+    <div
+      className="absolute inset-0 opacity-[0.02] pointer-events-none"
+      style={{ backgroundImage: "radial-gradient(#000 2px, transparent 2px)", backgroundSize: "32px 32px" }}
+    />
     <div className="grain-overlay absolute inset-0 pointer-events-none" />
-    
-    <div className="container relative z-10 px-4">
+
+    <div className="container relative z-10 px-4 max-w-6xl mx-auto">
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-20"
+        className="mb-20 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-8"
       >
-        <p className="inline-block px-4 py-1 border-2 border-primary/20 rounded-full text-xs font-mono tracking-widest uppercase text-primary mb-6 retro-shadow bg-card">
-          Festival Activities
-        </p>
-        <h2 className="text-4xl md:text-7xl font-display font-black text-foreground leading-[1.1]">
-          Explore The <br className="hidden md:block" />
-          <span className="text-gradient italic font-serif font-light">Event Schedule</span>
-        </h2>
+        <div>
+          <p className="inline-block px-4 py-1 border-2 border-primary/20 rounded-full text-xs font-mono tracking-widest uppercase text-primary mb-6 bg-card retro-shadow">
+            Festival Schedule
+          </p>
+          <h2 className="text-5xl md:text-7xl font-display font-black text-foreground leading-[1] uppercase tracking-tight">
+            Event <span className="text-gradient font-serif italic lowercase font-light">Timeline.</span>
+          </h2>
+        </div>
+        <div className="max-w-sm text-muted-foreground font-retro text-sm leading-relaxed border-l-2 border-primary/30 pl-4 hidden md:block">
+          A completely detailed breakdown of our event activities, mapped out cleanly for your convenience.
+        </div>
       </motion.div>
 
-      {/* Scattered Polaroids Layout */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-6 lg:gap-12 mt-10">
+      {/* The Timeline List */}
+      <div className="flex flex-col">
         {sections.map((s, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 50, rotate: 0 }}
-            whileInView={{ opacity: 1, y: 0, rotate: s.rotate }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.15, type: "spring", stiffness: 60 }}
-            whileHover={{ y: -15, rotate: 0, zIndex: 50, scale: 1.05 }}
-            className={`relative w-[280px] sm:w-[320px] ${s.bgColor} p-4 pb-12 rounded-sm shadow-xl transition-all duration-300 border border-black/5 hover:shadow-2xl`}
-            style={{boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 3px 5px rgba(0,0,0,0.05)"}}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+            className="group relative flex flex-col md:flex-row border-t-2 border-border/50 py-10 md:py-16 hover:bg-card/40 transition-colors duration-500"
           >
-            {/* Masking Tape */}
-            <div 
-              className={`absolute w-24 h-6 bg-white/60 backdrop-blur-sm border border-black/5 shadow-sm transform z-20 ${s.tapePos}`}
-              style={{ clipPath: "polygon(0 5%, 100% 0, 95% 100%, 5% 95%)" }}
-            />
-
-            {/* Inner Photo Area */}
-            <div className="w-full aspect-square bg-white border border-black/10 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group">
-              {/* Halftone subtle dots */}
-              <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: "radial-gradient(#000 1px, transparent 1px)", backgroundSize: "10px 10px"}} />
-              
-              <div className="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/10 transition-transform duration-500">
-                <HugeiconsIcon icon={s.icon} size={32} strokeWidth={1.5} className="text-primary" />
+            {/* Left side (Date & Number) */}
+            <div className="md:w-5/12 flex-shrink-0 flex flex-col justify-between pr-8 md:pr-16 md:border-r-2 border-border/20 mb-8 md:mb-0">
+              <div className="flex items-start gap-4 md:gap-6">
+                <span className="font-serif italic text-6xl md:text-7xl lg:text-8xl text-primary/80 font-light leading-none -mt-2 group-hover:text-primary transition-colors">
+                  0{i + 1}.
+                </span>
+                <div>
+                  <h3 className="text-3xl md:text-5xl font-display font-black uppercase tracking-tight mb-2">
+                    {s.title}
+                  </h3>
+                  <p className="font-mono text-sm text-foreground/60 uppercase tracking-widest">
+                    {s.theme}
+                  </p>
+                </div>
               </div>
-              
-              <h3 className="font-display font-bold text-2xl text-foreground !leading-tight mb-2 relative z-10 group-hover:text-primary transition-colors">
-                {s.title}
-              </h3>
-              <p className="text-sm font-retro text-muted-foreground uppercase tracking-wider relative z-10">
-                {s.subtitle}
-              </p>
+
+              <div className="hidden md:block mt-12 text-primary/10 group-hover:text-primary/40 transition-colors duration-500 transform group-hover:scale-110 group-hover:rotate-12 w-fit">
+                <HugeiconsIcon icon={s.icon} size={100} strokeWidth={1} />
+              </div>
             </div>
 
-            {/* Polaroid Bottom Text Area */}
-            <div className="pt-6 px-2 text-center">
-              <span className="inline-block px-3 py-1 rounded bg-black/5 text-foreground/80 font-mono text-[10px] tracking-widest uppercase mb-4">
-                {s.theme}
-              </span>
-              
-              <ul className="text-foreground/80 text-sm leading-snug font-medium italic font-serif space-y-1.5 min-h-[5rem]">
-                {s.items.map((item, idx) => (
-                  <li key={idx}>— {item}</li>
-                ))}
-              </ul>
-
-              {/* Handwritten signature/number */}
-              <div className="absolute bottom-4 right-4 opacity-30 font-serif italic text-xl">
-                0{i + 1}
+            {/* Right side (Items) */}
+            <div className="md:w-7/12 md:pl-16 flex flex-col justify-center">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-0.5 w-8 bg-primary/40" />
+                <h4 className="font-retro text-sm uppercase tracking-widest text-primary">
+                  {s.subtitle}
+                </h4>
               </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                {s.items.map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ x: -10, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.2 + (idx * 0.1) }}
+                    className="flex items-center gap-5 group/item"
+                  >
+                    <div className="w-12 h-12 rounded-full border border-border/50 flex items-center justify-center bg-background group-hover/item:bg-primary group-hover/item:border-primary transition-colors shrink-0 retro-shadow">
+                      <span className="font-mono text-xs font-bold text-foreground/50 group-hover/item:text-primary-foreground transition-colors">
+                        {idx + 1}
+                      </span>
+                    </div>
+                    <span className="text-xl md:text-2xl font-display font-bold leading-tight text-foreground/90 group-hover/item:text-primary transition-colors">
+                      {item}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile background icon watermark */}
+            <div className="absolute right-4 bottom-4 md:hidden text-primary/5 pointer-events-none transform -rotate-12">
+              <HugeiconsIcon icon={s.icon} size={120} strokeWidth={1} />
             </div>
           </motion.div>
         ))}
