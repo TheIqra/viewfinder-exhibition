@@ -183,7 +183,9 @@ const ComingSoonSection = () => {
           transition={{ delay: 0.6 }}
         >
           <motion.a
-            href="#registration"
+            href="https://forms.gle/tVnPjCRGKyRXwBGNA"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-sm bg-primary text-primary-foreground font-display font-bold text-base overflow-hidden retro-shadow"
             whileHover={{ x: 2, y: 2, boxShadow: "none" }}
             animate={{
