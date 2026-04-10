@@ -125,25 +125,42 @@ const EventSegments = () => {
                   {[
                     { title: "Color Hunt", icon: <HugeiconsIcon icon={Idea01Icon} size={20} strokeWidth={2} /> },
                     { title: "Pop Quiz 1", icon: <HelpCircle size={20} strokeWidth={2} /> },
-                    { title: "Photo Hunt", icon: <Search size={20} strokeWidth={2} /> },
+                    { title: "Photo Hunt", icon: <Search size={20} strokeWidth={2} />, href: "https://forms.gle/N4wRyNDYfzoNXo8s9" },
                     { title: "Dumb Charades", icon: <Gamepad2 size={20} strokeWidth={2} /> },
                     { title: "Pop Quiz 2", icon: <MessageCircleQuestion size={20} strokeWidth={2} /> },
                     { title: "Prize Giving", icon: <Gift size={20} strokeWidth={2} /> },
-                  ].map((item, idx) => (
-                    <motion.div 
+                  ].map((item, idx) => {
+                    const Tag = item.href ? "a" : "div";
+                    const linkProps = item.href
+                      ? { href: item.href, target: "_blank", rel: "noopener noreferrer" }
+                      : {};
+                    return (
+                    <motion.div
                       key={idx}
                       initial={{ x: 20, opacity: 0 }}
                       whileInView={{ x: 0, opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.3 + (idx * 0.05) }}
-                      className="flex items-center gap-3 bg-background/50 border border-border/50 p-4 rounded-xl group/sub hover:bg-primary/10 hover:border-primary/30 transition-colors z-10 relative"
+                      className="relative z-10"
                     >
-                      <div className="w-10 h-10 shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover/sub:bg-primary group-hover/sub:text-background transition-colors">
-                        {item.icon}
-                      </div>
-                      <span className="font-display font-semibold text-base leading-tight">{item.title}</span>
+                      <Tag
+                        {...linkProps}
+                        className="flex items-center gap-3 bg-background/50 border border-border/50 p-4 rounded-xl group/sub hover:bg-primary/10 hover:border-primary/30 transition-colors cursor-pointer w-full"
+                      >
+                        <div className="w-10 h-10 shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover/sub:bg-primary group-hover/sub:text-background transition-colors">
+                          {item.icon}
+                        </div>
+                        <span className="font-display font-semibold text-base leading-tight">{item.title}</span>
+                        {item.href && (
+                          <span className="ml-auto flex items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded-full whitespace-nowrap">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse inline-block" />
+                            Register
+                          </span>
+                        )}
+                      </Tag>
                     </motion.div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>

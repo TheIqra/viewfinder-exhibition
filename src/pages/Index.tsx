@@ -5,6 +5,7 @@ import WhoCanParticipate from "@/components/WhoCanParticipate";
 import ScheduleSection from "@/components/ScheduleSection";
 import EventSegments from "@/components/EventSegments";
 import SectionsDetail from "@/components/SectionsDetail";
+import JudgeSection from "@/components/JudgeSection";
 import RulesSection from "@/components/RulesSection";
 import RegistrationSection from "@/components/RegistrationSection";
 import TermsSection from "@/components/TermsSection";
@@ -24,6 +25,7 @@ const Index = () => (
     <WhoCanParticipate />
     <MarqueeStrip />
     <SectionsDetail />
+    <JudgeSection />
     <RulesSection />
     <RegistrationSection />
     <FAQSection />
