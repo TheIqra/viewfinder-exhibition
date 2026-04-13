@@ -130,9 +130,9 @@ const RegistrationSection = () => (
                   </p>
                 </div>
               </div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-primary text-xs font-mono uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                Limited Slots
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted border border-border text-muted-foreground text-xs font-mono uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground" />
+                Registration Closed
               </span>
             </div>
 
@@ -229,22 +229,16 @@ const RegistrationSection = () => (
                 {/* CTA */}
                 <div className="pt-2">
                   <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
-                    ⚠️ Register early — limited slots available
+                    ⚠️ Registration for Photo Hunt is now closed
                   </p>
-                  <motion.a
-                    href="https://forms.gle/N4wRyNDYfzoNXo8s9"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ x: 3, y: -3 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="group flex items-center justify-center gap-3 w-full px-8 py-4 bg-foreground text-primary-foreground font-display font-bold text-lg rounded-sm retro-shadow hover:shadow-none transition-all"
+                  <div
+                    className="flex items-center justify-center gap-3 w-full px-8 py-4 bg-secondary text-muted-foreground font-display font-bold text-lg rounded-sm border-2 border-border cursor-not-allowed opacity-80"
                   >
                     <Search size={20} strokeWidth={2.5} />
-                    Register for Photo Hunt
-                    <ArrowRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
-                  </motion.a>
+                    Registration Closed
+                  </div>
                   <p className="text-center text-xs text-muted-foreground mt-3 font-retro italic">
-                    Get ready for the challenge — can you complete the picture? 📸
+                    Get ready for the challenge — see you at the event! 📸
                   </p>
                 </div>
               </div>

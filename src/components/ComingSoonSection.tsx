@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const TARGET_DATE = new Date("2026-04-13T23:59:59");
+const TARGET_DATE = new Date("2026-04-19T00:00:00");
 
 function useCountdown(target: Date) {
   const calc = () => {
@@ -114,7 +114,7 @@ const ComingSoonSection = () => {
           viewport={{ once: true }}
         >
           <div className="h-px w-12 bg-primary/40" />
-          <span className="text-xs tracking-[0.4em] uppercase text-primary font-retro">Submission</span>
+          <span className="text-xs tracking-[0.4em] uppercase text-primary font-retro">Exhibition</span>
           <div className="h-px w-12 bg-primary/40" />
         </motion.div>
 
@@ -127,7 +127,7 @@ const ComingSoonSection = () => {
           transition={{ duration: 0.7 }}
           style={{ animation: "flicker 5s ease-in-out infinite" }}
         >
-          Don't Miss <span className="text-gradient">Your Shot</span>
+          The Exhibition <span className="text-gradient">Starts In</span>
         </motion.h2>
 
         <motion.p
@@ -137,7 +137,7 @@ const ComingSoonSection = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          Submissions close Apr 13 — register now and showcase your best work.
+          Registration is now closed. Get ready for an incredible photography showcase!
         </motion.p>
 
         {/* Countdown */}
@@ -183,9 +183,7 @@ const ComingSoonSection = () => {
           transition={{ delay: 0.6 }}
         >
           <motion.a
-            href="https://forms.gle/tVnPjCRGKyRXwBGNA"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#event-segments"
             className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-sm bg-primary text-primary-foreground font-display font-bold text-base overflow-hidden retro-shadow"
             whileHover={{ x: 2, y: 2, boxShadow: "none" }}
             animate={{
@@ -204,7 +202,7 @@ const ComingSoonSection = () => {
               animate={{ scale: [1, 1.4, 1] }}
               transition={{ duration: 1.2, repeat: Infinity }}
             />
-            Claim Your Frame — Submit Now
+            View Event Schedule
           </motion.a>
 
         </motion.div>

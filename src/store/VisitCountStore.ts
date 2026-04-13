@@ -11,6 +11,7 @@ interface VisitCountState {
 
 const SESSION_TRACK_KEY = "vf_visit_tracked";
 let isInitializing = false;
+let hasTracked = false;
 
 const useVisitCountStore = create<VisitCountState>((set) => ({
   totalVisits: 0,
@@ -24,11 +25,11 @@ const useVisitCountStore = create<VisitCountState>((set) => ({
 
     set({ loading: true, error: false });
 
-    // Track this visit only once per session
-    if (!sessionStorage.getItem(SESSION_TRACK_KEY)) {
-      // We can await this if we want the newly incremented stats to show up accurately right away
+    // Track this visit once per page load to see the counter increase correctly
+    // (avoids React Strict Mode double-firing).
+    if (!hasTracked) {
+      hasTracked = true;
       await trackUniqueVisitor();
-      sessionStorage.setItem(SESSION_TRACK_KEY, "true");
     }
 
     // Fetch aggregated stats to display in footer
