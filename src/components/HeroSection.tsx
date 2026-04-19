@@ -1,186 +1,133 @@
 import { motion } from "framer-motion";
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowDownDoubleIcon, Directions02Icon, Calendar02Icon } from '@hugeicons/core-free-icons';
 import fpcLogo from "@/assets/fpc-logo.png";
-import uapLogo from "@/assets/uap-logo.png";
-
 
 const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden magic-pattern">
-    {/* Camera focus reveal - isolated so filter doesn't block pointer-events */}
-    <div className="absolute inset-0 z-[1] pointer-events-none camera-focus-reveal" />
+  <section className="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-background">
+    {/* Soft glowing ambient backgrounds */}
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+    
+    {/* Gentle dust particles overlay (simulated with grid) */}
+    <div className="grid-pattern absolute inset-0 opacity-10 pointer-events-none" />
 
-    {/* Camera focus ring */}
-    <div className="camera-focus-ring pointer-events-none" />
-
-    {/* Camera viewfinder corners + crosshair */}
+    {/* Cinematic framing crop marks */}
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[6]">
       <motion.div
-        className="camera-viewfinder"
-        initial={{ opacity: 0, scale: 1.3 }}
+        className="w-[90vw] h-[90vh] md:w-[85vw] md:h-[85vh] relative"
+        initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
+        transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
       >
-        <motion.div className="absolute top-0 left-0 vf-corner border-t-2 border-l-2 border-primary/40" animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute top-0 right-0 vf-corner border-t-2 border-r-2 border-primary/40" animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} />
-        <motion.div className="absolute bottom-0 left-0 vf-corner border-b-2 border-l-2 border-primary/40" animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
-        <motion.div className="absolute bottom-0 right-0 vf-corner border-b-2 border-r-2 border-primary/40" animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="w-px h-6 md:h-8 bg-primary/20 absolute left-1/2 -translate-x-1/2 -top-3 md:-top-4" />
-          <div className="w-6 md:w-8 h-px bg-primary/20 absolute top-1/2 -translate-y-1/2 -left-3 md:-left-4" />
-          <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full border border-primary/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-        </div>
+        <div className="absolute top-0 left-0 w-8 md:w-16 h-px bg-primary/30" />
+        <div className="absolute top-0 left-0 w-px h-8 md:h-16 bg-primary/30" />
+        <div className="absolute top-0 right-0 w-8 md:w-16 h-px bg-primary/30" />
+        <div className="absolute top-0 right-0 w-px h-8 md:h-16 bg-primary/30" />
+        <div className="absolute bottom-0 left-0 w-8 md:w-16 h-px bg-primary/30" />
+        <div className="absolute bottom-0 left-0 w-px h-8 md:h-16 bg-primary/30" />
+        <div className="absolute bottom-0 right-0 w-8 md:w-16 h-px bg-primary/30" />
+        <div className="absolute bottom-0 right-0 w-px h-8 md:h-16 bg-primary/30" />
       </motion.div>
     </div>
 
-    <div className="grid-pattern absolute inset-0 opacity-15 pointer-events-none" />
+    {/* Film strip subtle lines (left and right edges) */}
+    <div className="hidden md:block absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent pointer-events-none z-0" />
+    <div className="hidden md:block absolute right-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent pointer-events-none z-0" />
 
-    {/* Film strip left */}
-    <div className="hidden md:block absolute left-0 top-0 bottom-0 film-strip opacity-20 pointer-events-none z-0" />
-    <div className="hidden md:block absolute right-0 top-0 bottom-0 film-strip opacity-20 pointer-events-none z-0" />
-
-    {/* Camera HUD Elements */}
-    <div className="absolute top-8 right-8 z-20 pointer-events-none hidden sm:flex items-center gap-2 font-mono text-xs md:text-sm text-red-500 font-bold tracking-widest">
-      <motion.div 
-        className="w-3 h-3 rounded-full bg-red-500"
-        animate={{ opacity: [1, 0, 1] }} 
-        transition={{ duration: 2, repeat: Infinity }} 
-      />
-      REC
-      <span className="ml-2 text-foreground/70">
-        00<motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1, repeat: Infinity }}>:</motion.span>00<motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1, repeat: Infinity }}>:</motion.span>00
-      </span>
-    </div>
-
-    <div className="absolute bottom-8 left-8 z-20 pointer-events-none hidden sm:flex flex-col gap-1 font-mono text-xs text-foreground/50 tracking-widest">
-      <span>ISO 800</span>
-      <span>F/2.8</span>
-      <span>1/125</span>
-    </div>
-
-    <div className="container relative z-[50] px-4 py-20 pointer-events-auto select-auto">
+    <div className="container relative z-[50] px-4 h-full flex flex-col justify-center items-center pointer-events-auto select-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="flex flex-col items-center text-center relative z-[50] w-full"
+        transition={{ duration: 2, ease: "easeOut" }}
+        className="flex flex-col items-center text-center relative z-[50] w-full max-w-4xl mx-auto"
       >
-        {/* Logos */}
-        <div className="flex items-center gap-6 md:gap-10 mb-8">
-          <motion.img
-            src={uapLogo}
-            alt="University of Asia Pacific"
-            className="w-16 h-16 md:w-24 md:h-24 object-contain"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          />
-          <motion.div
-            className="w-px h-16 md:h-20 bg-foreground/20"
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-          />
-          <motion.img
+        {/* Logo */}
+        <motion.div 
+          className="flex items-center justify-center mb-6 md:mb-10"
+          initial={{ opacity: 0, filter: "blur(10px)", y: -10 }}
+          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+          transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+        >
+          <img
             src={fpcLogo}
             alt="Film & Photography Club"
-            className="w-16 h-16 md:w-24 md:h-24 object-contain"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            className="w-16 h-16 md:w-20 md:h-20 object-contain opacity-80"
           />
-        </div>
+        </motion.div>
 
         {/* Subtitle */}
         <motion.p
-          className="text-sm md:text-base tracking-[0.3em] uppercase text-muted-foreground mb-4 font-retro"
+          className="text-xs md:text-sm tracking-[0.4em] md:tracking-[0.6em] uppercase text-foreground/50 mb-4 font-light"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.8, duration: 1.5 }}
         >
-          Film & Photography Club,CSE-UAP presents
+          Film & Photography Club Presents
         </motion.p>
 
         {/* Title */}
         <motion.h1
-          className="text-5xl md:text-8xl lg:text-9xl font-display font-900 tracking-tight leading-none mb-2"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-5xl md:text-7xl lg:text-9xl font-display font-light tracking-[0.1em] leading-none mb-3 text-foreground/90 flex flex-col sm:flex-row items-center gap-3 sm:gap-6"
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          style={{ animation: "flicker 4s ease-in-out infinite" }}
+          transition={{ delay: 1, duration: 1.5, ease: "easeOut" }}
         >
-          <span className="text-foreground">The</span>{" "}
-          <span className="text-gradient">ViewFinder</span>
+          <span className="opacity-80">THE</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60 font-medium" style={{ filter: "drop-shadow(0 0 30px theme(colors.primary.DEFAULT / 0.3))" }}>
+            VIEWFINDER
+          </span>
         </motion.h1>
 
+        {/* Edition Number */}
         <motion.div
-          className="flex items-center gap-4 mb-8"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.9, duration: 0.5 }}
-        >
-          <div className="h-0.5 w-16 md:w-24 bg-foreground/20" />
-          <span className="text-6xl md:text-8xl font-display font-black text-primary">8</span>
-          <div className="h-0.5 w-16 md:w-24 bg-foreground/20" />
-        </motion.div>
-
-        <motion.p
-          className="text-lg md:text-xl text-muted-foreground max-w-xl mb-4 font-retro"
+          className="flex items-center gap-6 mb-10 md:mb-14"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.1 }}
+          transition={{ delay: 1.3, duration: 2 }}
         >
-          A Captivating Photographic Journey
-        </motion.p>
-
-        {/* Dates */}
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mb-10"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3 }}
-        >
-          <div className="flex items-center gap-2 px-4 py-2 rounded-sm bg-primary/10 border border-primary/20 text-primary text-sm font-medium retro-shadow">
-            <span className="flex items-center justify-center">
-              <HugeiconsIcon icon={Calendar02Icon} size={16} color="currentColor" strokeWidth={2} />
-            </span>
-            19-20 April
-          </div>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-sm bg-secondary border border-border text-secondary-foreground text-sm font-medium retro-shadow">
-            <span className="flex items-center justify-center">
-              <HugeiconsIcon icon={Directions02Icon} size={16} color="currentColor" strokeWidth={2} />
-            </span>
-            UAP Plaza
-          </div>
+          <div className="h-px w-16 md:w-32 bg-gradient-to-r from-transparent to-primary/40" />
+          <span className="text-4xl md:text-6xl font-display font-light text-primary/80" style={{ filter: "drop-shadow(0 0 15px theme(colors.primary.DEFAULT / 0.5))" }}>8</span>
+          <div className="h-px w-16 md:w-32 bg-gradient-to-l from-transparent to-primary/40" />
         </motion.div>
 
-        {/* CTA */}
-        <motion.a
-          href="#event-segments"
-          className="group relative inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display font-semibold text-lg rounded-sm overflow-hidden transition-all retro-shadow hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+        {/* The vibe of beauty and waiting */}
+        <motion.div
+          className="relative text-center space-y-8 flex flex-col items-center"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5 }}
-          whileTap={{ scale: 0.97 }}
+          transition={{ delay: 1.8, duration: 1.5, ease: "easeOut" }}
         >
-          Explore Details
-          <span className="transition-transform group-hover:translate-y-1 flex items-center justify-center">
-            <HugeiconsIcon icon={ArrowDownDoubleIcon} size={20} color="currentColor" strokeWidth={2.5} />
-          </span>
-        </motion.a>
+          <motion.p 
+            className="text-base md:text-xl text-foreground/70 font-light leading-relaxed max-w-2xl px-4 italic"
+            animate={{ opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            "A chapter closes softly in the darkroom. Thank you for bringing your vision to life and making Season 8 truly unforgettable."
+          </motion.p>
+          
+          <div className="h-1 w-1 md:h-1.5 md:w-1.5 rounded-full bg-primary/40" />
+
+          <div className="pt-2 flex flex-col items-center">
+            <motion.p 
+              className="text-[0.65rem] md:text-xs text-primary uppercase tracking-[0.5em] mb-4 font-light opacity-80"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.5, duration: 2 }}
+            >
+              Anticipate the next frame
+            </motion.p>
+            
+            <motion.p 
+              className="text-2xl md:text-3xl font-display font-light text-foreground/90 uppercase tracking-[0.3em] flex items-center justify-center gap-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.8, duration: 2 }}
+            >
+               SEASON 
+               <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary/50 text-5xl md:text-6xl font-bold" style={{ filter: "drop-shadow(0 0 20px theme(colors.primary.DEFAULT / 0.6))" }}>9</span>
+            </motion.p>
+          </div>
+        </motion.div>
       </motion.div>
     </div>
-
-    {/* Scroll indicator */}
-    <motion.div
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none z-0"
-      animate={{ y: [0, 10, 0] }}
-      transition={{ duration: 2, repeat: Infinity }}
-    >
-      <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex justify-center pt-2">
-        <div className="w-1.5 h-3 rounded-full bg-primary/50" />
-      </div>
-    </motion.div>
   </section>
 );
 
